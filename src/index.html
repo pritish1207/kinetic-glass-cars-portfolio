@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kinetic Glass - Luxury Car Emporium</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <header class="main-header glass-panel">
+        <nav class="container">
+            <a href="#" class="logo">KineticGlass</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#catalogue">Catalogue</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cart-icon-wrapper">
+                <svg class="cart-icon" viewBox="0 0 24 24"><path fill="currentColor" d="M17,18C15.89,18 15,18.89 15,20A2,2 0 0,0 17,22A2,2 0 0,0 19,20C19,18.89 18.1,18 17,18M1,2V4H3L6.6,11.59L5.24,14.04C5.09,14.32 5,14.65 5,15A2,2 0 0,0 7,17H19V15H7.42A0.25,0.25 0 0,1 7.17,14.75L8.1,13H15.55C16.3,13 16.96,12.58 17.3,11.97L20.88,5.5C20.95,5.34 21,5.17 21,5A1,1 0 0,0 20,4H5.21L4.27,2H1Z" /></svg>
+                <span class="cart-count">0</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Experience <br>Automotive Fluidity.</h1>
+                    <p class="hero-subtitle">Discover a curated collection of the world's most desirable cars, presented with kinetic elegance.</p>
+                    <a href="#catalogue" class="bouncy-button">Explore Models</a>
+                </div>
+            </div>
+            <div class="hero-car-showcase">
+                <img src="assets/images/etron.png" alt="Featured luxury car" class="hero-car-img">
+            </div>
+            <div class="scroll-down-indicator">
+                <span></span>
+            </div>
+        </section>
+
+        <!-- Catalogue Section -->
+        <section id="catalogue" class="catalogue-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Our Collection</h2>
+                    <div class="filter-controls">
+                        <span>Filter by:</span>
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="Sports">Sports</button>
+                        <button class="filter-btn" data-filter="Electric">Electric</button>
+                        <button class="filter-btn" data-filter="SUV">SUV</button>
+                    </div>
+                </div>
+                <div class="car-grid">
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-form-container glass-panel">
+                <h2>Send an Enquiry</h2>
+                <p class="contact-subtitle">Have a question or want to book a viewing? Drop us a line.</p>
+                <form id="contact-form" novalidate>
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="bouncy-button">Submit Enquiry</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer glass-panel">
+        <div class="container">
+            <p>© 2024 KineticGlass Cars. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals and Overlays -->
+    <div class="modal-overlay" id="details-modal-overlay">
+        <div class="details-modal glass-panel">
+            <button class="close-modal-btn">×</button>
+            <div class="modal-content-wrapper">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal-overlay" id="cart-modal-overlay">
+        <div class="details-modal glass-panel">
+            <button class="close-modal-btn" id="close-cart-btn">×</button>
+            <h2>Your Enquiry Cart</h2>
+            <div class="cart-content-wrapper">
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,827 @@
+﻿/*1. CSS Variables */
+:root {
+    --bg-gradient: linear-gradient(135deg, #222230, #111118);
+    --primary-gradient: linear-gradient(90deg, #8E2DE2, #4A00E0);
+    --accent-color: #00C6FF;
+    --text-primary: #F5F5F5;
+    --text-secondary: #A0A0A0;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --bouncy-ease: cubic-bezier(0.68, -0.6, 0.32, 1.6); 
+}
+
+/*2. Base & Reset Styles  */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    overflow-x: hidden; 
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+    a:hover {
+        color: var(--text-primary);
+    }
+
+/* 3. Utility Classes (We'll use these later) */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* 4. Glassmorphism Effect */
+.glass-panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); 
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* 5. Bouncy Button Style  */
+.bouncy-button {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--primary-gradient);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.4s var(--bouncy-ease), box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(142, 45, 226, 0.4);
+}
+
+    .bouncy-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 30px rgba(142, 45, 226, 0.6);
+    }
+/* 6. Header & Navbar Styles */
+.main-header {
+    position: fixed; 
+    top: 20px;
+    left: 5%;
+    width: 90%;
+    z-index: 1000; 
+    transition: transform 0.4s var(--bouncy-ease);
+}
+
+    .main-header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        width: 100%; 
+    }
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+    .nav-links a {
+        position: relative;
+        padding: 5px 0;
+        font-weight: 500;
+        color: var(--text-secondary);
+    }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--primary-gradient);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s var(--bouncy-ease);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+            .nav-links a:hover::after {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+
+.cart-icon-wrapper {
+    position: relative;
+    cursor: pointer;
+}
+
+.cart-icon {
+    width: 28px;
+    height: 28px;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.cart-icon-wrapper:hover .cart-icon {
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+.cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: var(--primary-gradient);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 2px solid #222230;
+}
+
+/* 7. Footer Styles */
+.main-footer {
+    position: sticky; 
+    bottom: 20px;
+    left: 5%;
+    width: 90%;
+    margin-top: 4rem; 
+}
+
+    .main-footer .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        width: 100%; 
+    }
+
+.social-icons a {
+    margin-left: 1.5rem;
+}
+/* 8. Hero Section Styles */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 150px; 
+    padding-bottom: 150px; 
+}
+
+.hero-content {
+    max-width: 600px;
+    position: relative;
+    z-index: 2; 
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+    
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin: 1.5rem 0 2.5rem;
+    max-width: 80%;
+    
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+
+.hero-content .bouncy-button {
+    
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.hero-car-showcase {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    overflow: hidden; 
+}
+
+.hero-car-img {
+    position: absolute;
+    right: -0%; 
+    bottom: 10%;
+    width: 60%;
+    max-width: 900px;
+    object-fit: contain;
+    filter: drop-shadow(0 30px 20px rgba(0,0,0,0.4)); 
+    
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+
+.scroll-down-indicator {
+    position: absolute;
+    bottom: 80px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 40px;
+    border: 2px solid var(--text-secondary);
+    border-radius: 20px;
+    opacity: 0; 
+}
+
+    .scroll-down-indicator span {
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        height: 8px;
+        background: var(--text-secondary);
+        border-radius: 2px;
+        animation: scroll-anim 2s infinite ease-out;
+    }
+
+@keyframes scroll-anim {
+    0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    90% {
+        transform: translate(-50%, 12px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translate(-50%, 0);
+        opacity: 0;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .hero-car-img {
+        width: 90%;
+        right: -10%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+    
+}
+/* 9. Catalogue Section Styles */
+.catalogue-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    position: relative;
+    
+    background: radial-gradient(circle at 10% 20%, rgba(142, 45, 226, 0.1), transparent 30%);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    flex-wrap: wrap; 
+    gap: 1rem;
+}
+
+    .section-header h2 {
+        font-size: 2.5rem;
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: var(--primary-gradient);
+            border-radius: 2px;
+        }
+
+.filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--glass-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid var(--glass-border);
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .filter-btn.active, .filter-btn:hover {
+        color: var(--text-primary);
+        background: var(--primary-gradient);
+    }
+
+.car-grid {
+    display: grid;
+    
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    perspective: 1500px; 
+}
+
+/* 10. Car Card Styles */
+.car-card {
+    
+    padding: 1.5rem;
+    overflow: hidden;
+    transition: transform 0.5s var(--bouncy-ease);
+    transform-style: preserve-3d; 
+    opacity: 0; 
+    transform: translateY(50px);
+}
+
+    
+    .car-card.special-feature::before {
+        content: 'Featured';
+        position: absolute;
+        top: 15px;
+        right: -30px;
+        background: var(--primary-gradient);
+        color: white;
+        padding: 4px 35px;
+        transform: rotate(45deg);
+        font-size: 0.8rem;
+        font-weight: 600;
+        z-index: 4;
+    }
+
+    .car-card .car-image-container {
+        position: relative;
+        background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+        border-radius: 0.75rem;
+        margin-bottom: 1.5rem;
+        transform: translateZ(40px); 
+    }
+
+    .car-card img {
+        width: 100%;
+        display: block;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+        filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+        padding: 1rem 0; 
+    }
+
+    .car-card:hover img {
+        transform: scale(1.15) rotate(-5deg); 
+    }
+
+.car-card-content {
+    transform: translateZ(20px); 
+}
+
+.car-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.car-card .car-category {
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.car-card .car-price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin-bottom: 1.5rem;
+}
+
+.car-card .card-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.details-btn {
+    flex-grow: 1; 
+}
+
+.add-to-cart-btn {
+    padding: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+    .add-to-cart-btn:hover {
+        background: var(--accent-color);
+        border-color: var(--accent-color);
+    }
+
+    .add-to-cart-btn .cart-icon {
+        width: 20px;
+        height: 20px;
+        display: block;
+    }
+/* 11. Details Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 20, 0.7); 
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+    .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+.details-modal {
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    padding: 2rem;
+    position: relative;
+    overflow-y: auto; 
+    
+    transform: scale(0.7) translateY(-50px);
+    transition: transform 0.5s var(--bouncy-ease);
+}
+
+.modal-overlay.active .details-modal {
+    transform: scale(1) translateY(0);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+    .close-modal-btn:hover {
+        color: var(--text-primary);
+        transform: rotate(90deg) scale(1.2);
+    }
+
+
+.modal-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.modal-image-gallery .main-image {
+    width: 100%;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+    padding: 1rem;
+}
+
+    .modal-image-gallery .main-image img {
+        width: 100%;
+        filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+    }
+
+.modal-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-info .car-category {
+    color: var(--accent-color);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.modal-info .car-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.modal-info .features-list {
+    list-style: none;
+    margin-bottom: 1.5rem;
+    padding-left: 0;
+}
+
+    .modal-info .features-list li {
+        padding-left: 25px;
+        position: relative;
+        margin-bottom: 0.75rem;
+    }
+
+        .modal-info .features-list li::before {
+            content: '✓';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+
+.modal-info .car-price {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.color-switcher {
+    margin-top: 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.color-dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+    .color-dot.active {
+        border-color: var(--accent-color);
+        transform: scale(1.15);
+    }
+
+
+@media (max-width: 800px) {
+    .modal-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-info h2 {
+        font-size: 2rem;
+    }
+}
+/* 12. Contact Form Section */
+.contact-section {
+    padding: 6rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: radial-gradient(circle at 90% 80%, rgba(0, 198, 255, 0.08), transparent 30%);
+}
+
+.contact-form-container {
+    width: 90%;
+    max-width: 600px;
+    padding: 2.5rem;
+    text-align: center;
+}
+
+    .contact-form-container h2 {
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+    }
+
+.contact-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: 2.5rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2.5rem;
+    text-align: left;
+}
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px 0;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid var(--glass-border);
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-family: var(--font-body);
+        position: relative;
+        z-index: 1; 
+    }
+
+    .form-group textarea {
+        resize: vertical; 
+        min-height: 80px;
+    }
+
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-bottom-color: var(--accent-color);
+        }
+
+    .form-group label {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        color: var(--text-secondary);
+        transition: all 0.3s ease;
+        z-index: 0; 
+        pointer-events: none; 
+    }
+
+    
+    .form-group input:focus + label,
+    .form-group input:valid + label,
+    .form-group textarea:focus + label,
+    .form-group textarea:valid + label {
+        top: -20px;
+        font-size: 0.8rem;
+        color: var(--accent-color);
+    }
+/* 13. Cart Modal Styles */
+#cart-modal-overlay h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.cart-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 50vh; 
+    overflow-y: auto;
+    padding-right: 1rem; 
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+    .cart-item:last-child {
+        border-bottom: none;
+    }
+
+.cart-item-img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent);
+}
+
+.cart-item-info {
+    flex-grow: 1;
+}
+
+    .cart-item-info h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    .cart-item-info p {
+        color: var(--text-secondary);
+        font-family: var(--font-heading);
+    }
+
+.remove-from-cart-btn {
+    background: none;
+    border: 1px solid var(--text-secondary);
+    color: var(--text-secondary);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+    .remove-from-cart-btn:hover {
+        background: #e74c3c; 
+        border-color: #e74c3c;
+        color: white;
+        transform: scale(1.1) rotate(90deg);
+    }
+
+.cart-summary {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--glass-border);
+    text-align: right;
+}
+
+    .cart-summary h3 {
+        font-size: 1.5rem;
+        color: var(--text-secondary);
+    }
+
+    .cart-summary span {
+        font-size: 2rem;
+        color: var(--text-primary);
+        margin-left: 1rem;
+        font-family: var(--font-heading);
+    }
+
+.empty-cart-message {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+}
